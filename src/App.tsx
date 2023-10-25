@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface User {
+  name: {
+    first: string;
+    last: string;
+  };
+  email: string;
 }
 
+const App: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+
+  const fetchUser = async () => {
+    try {
+      const response = await axios.get('https://randomuser.me/api');
+      const result = response.data.results[0];
+      setUser(result);
+      localStorage.setItem('user', JSON.stringify(result));
+    } catch (error) {
+      console.error('Error fetching user:', error);
+    }
+  };
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    } else {
+      fetchUser();
+    }
+  }, []);
+
+  return (
+    <div>
+      <h1>ReactJS Assignment</h1>
+      {user && (
+        <div>
+          <h2>Name: {user.name.first} {user.name.last}</h2>
+          <p>Email: {user.email}</p>
+          <button onClick={fetchUser}>Refresh</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default App;
+
