@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/axios-example.github.io/static/css/main.073c9b0a.css",
+    "main.js": "/axios-example.github.io/static/js/main.e79bf730.js",
+    "static/js/787.16aa9b1b.chunk.js": "/axios-example.github.io/static/js/787.16aa9b1b.chunk.js",
+    "index.html": "/axios-example.github.io/index.html",
+    "main.073c9b0a.css.map": "/axios-example.github.io/static/css/main.073c9b0a.css.map",
+    "main.e79bf730.js.map": "/axios-example.github.io/static/js/main.e79bf730.js.map",
+    "787.16aa9b1b.chunk.js.map": "/axios-example.github.io/static/js/787.16aa9b1b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.e79bf730.js"
+  ]
+}
